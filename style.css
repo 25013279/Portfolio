@@ -147,3 +147,6 @@ footer { text-align: center; padding: 32px 6vw; border-top: 1px solid var(--bord
 /* Resume link in nav */
 .nav nav a.nav-resume { color: var(--accent); border: 1px solid var(--accent); padding: 2px 12px; border-radius: 6px; }
 .nav nav a.nav-resume:hover { background: var(--accent-dim); }
+
+/* Project screenshots (hidden automatically if the file is missing) */
+.card-img { width: calc(100% + 52px); margin: -26px -26px 20px; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; border-radius: 12px 12px 0 0; border-bottom: 1px solid var(--border); background: #0d1117; }
