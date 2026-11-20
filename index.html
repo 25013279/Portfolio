@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashish Siju | Cloud & Infrastructure Student</title>
+  <meta name="description" content="Ashish Siju, Enterprise Cloud Computing & Management student at Republic Polytechnic. Projects in web development, cloud, networking and Linux.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <a href="#top" class="logo">ashish<span>.siju</span></a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <a href="resume.html" class="nav-resume">Resume</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <p class="tag">$ whoami</p>
+      <h1>Ashish Siju</h1>
+      <p class="lead">Enterprise Cloud Computing &amp; Management student at Republic Polytechnic. I build web apps, design networks, and run Linux servers.</p>
+      <div class="hero-links">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn" href="resume.html">View resume</a>
+        <a class="btn" href="https://github.com/25013279" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/ashish-siju-952b362a2/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2><span>01</span> About me</h2>
+      <div class="about-grid">
+        <div>
+          <p>I'm a student at Republic Polytechnic in Singapore, studying enterprise cloud computing. My modules cover DevOps, full-stack web development, Linux system administration, networking, and AWS cloud architecture.</p>
+          <p>Outside school, I've worked part-time in customer service since 2022, at hotels like Marina Bay Sands, Capella and The Fullerton. That work taught me to stay calm under pressure and talk to people clearly, which helps a lot in team projects.</p>
+          <p>I'm looking for an internship in cloud, infrastructure, or DevOps.</p>
+        </div>
+        <ul class="facts">
+          <li><span>Based in</span>Singapore</li>
+          <li><span>Studying</span>Diploma in Enterprise Cloud Computing &amp; Management</li>
+          <li><span>School</span>Republic Polytechnic · graduating Mar 2028</li>
+          <li><span>Looking for</span>Internship in cloud / DevOps</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2><span>02</span> Projects</h2>
+      <div class="cards">
+
+        <article class="card">
+          <p class="card-meta">Team project · DevOps (C270)</p>
+          <h3>Sparkle: cleaning service booking app</h3>
+          <p>A web app for booking home cleaning services, built by a team of six. I owned the booking feature. It generates time slots based on how long each service takes, blocks past dates, checks card numbers with the Luhn algorithm, and lets users edit or cancel bookings. I also wrote the Dockerfile and docker-compose setup for the team's CI/CD pipeline.</p>
+          <ul class="stack"><li>Python</li><li>Flask</li><li>SQLAlchemy</li><li>MySQL (Aiven)</li><li>Docker</li></ul>
+          <a class="card-link" href="https://github.com/25013279" target="_blank" rel="noopener">View on GitHub →</a>
+        </article>
+
+        <article class="card">
+          <p class="card-meta">Team project · Web development (C237)</p>
+          <h3>UniPocket: student allowance tracker</h3>
+          <p>An app that helps students and parents track allowance and spending. I built the budget dashboard, which shows the remaining balance, a pie chart of spending by category, and recent transactions. I set up the dev environment on a Linux VM and kept secrets out of the repo with a .env file.</p>
+          <ul class="stack"><li>Node.js</li><li>Express</li><li>EJS</li><li>Azure MySQL</li></ul>
+          <a class="card-link" href="https://github.com/25013279" target="_blank" rel="noopener">View on GitHub →</a>
+        </article>
+
+        <article class="card">
+          <p class="card-meta">Solo project · Web development (C237)</p>
+          <h3>SupermarketApp</h3>
+          <p>A full CRUD store app with product image uploads, login sessions, and role-based access, so admins and regular users see different pages. I moved the database to Azure MySQL and deployed the app on Render.</p>
+          <ul class="stack"><li>Node.js</li><li>Express</li><li>MySQL</li><li>Bootstrap</li><li>Render</li></ul>
+          <a class="card-link" href="https://github.com/25013279" target="_blank" rel="noopener">View on GitHub →</a>
+        </article>
+
+        <article class="card">
+          <p class="card-meta">Lab project · Networking (C328)</p>
+          <h3>Multi-site enterprise network</h3>
+          <p>A network design for a multi-site company in Cisco Packet Tracer. I configured my zone's switches with VLANs, trunk links, and spanning tree, set the root bridge, and mapped neighbours with CDP.</p>
+          <ul class="stack"><li>Cisco IOS</li><li>VLANs</li><li>STP</li><li>Packet Tracer</li></ul>
+        </article>
+
+        <article class="card">
+          <p class="card-meta">Lab · Network automation (DEVASC)</p>
+          <h3>RESTCONF router automation</h3>
+          <p>I enabled RESTCONF over HTTPS on a Cisco CSR1000v virtual router, then used Postman and Python scripts to read and change interface settings through its API instead of the CLI.</p>
+          <ul class="stack"><li>Python</li><li>RESTCONF</li><li>Postman</li><li>Cisco CSR1kv</li></ul>
+        </article>
+
+        <article class="card">
+          <p class="card-meta">Coursework · Linux admin (C330)</p>
+          <h3>RHEL 9 server administration</h3>
+          <p>Hands-on work managing Red Hat Enterprise Linux 9: storage with LVM, file sharing with NFS, firewalld rules, SELinux, system logging, and Bash scripts to automate routine tasks.</p>
+          <ul class="stack"><li>RHEL 9</li><li>Bash</li><li>LVM</li><li>SELinux</li><li>firewalld</li></ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2><span>03</span> What I can do</h2>
+      <p class="skills-intro">Skills from my diploma modules and projects at Republic Polytechnic.</p>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Cloud on AWS</h3>
+          <p>I can set up EC2 instances, S3 storage, IAM users and roles, and VPC networks. I can plan an AWS setup with monitoring, security controls, backups and cost in mind.</p>
+          <ul class="stack"><li>AWS</li><li>EC2</li><li>S3</li><li>IAM</li><li>VPC</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>DevOps &amp; containers</h3>
+          <p>I can containerise apps with Docker, manage code with Git branches and pull requests, and set up CI/CD pipelines that build and deploy apps automatically.</p>
+          <ul class="stack"><li>Docker</li><li>docker-compose</li><li>Jenkins</li><li>Git</li><li>Render</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Linux administration</h3>
+          <p>I can run RHEL servers: manage users and permissions, install packages, set up LVM storage and NFS shares, lock things down with firewalld and SELinux, and write Bash scripts for routine jobs.</p>
+          <ul class="stack"><li>RHEL 9</li><li>Bash</li><li>LVM</li><li>SELinux</li><li>Podman</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Networking</h3>
+          <p>I can configure Cisco switches and routers with VLANs, trunks, STP, routing, ACLs and NAT, troubleshoot connectivity, and automate device changes through APIs like RESTCONF.</p>
+          <ul class="stack"><li>Cisco IOS</li><li>VLANs</li><li>ACLs</li><li>NAT</li><li>RESTCONF</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>Web development &amp; testing</h3>
+          <p>I can build full-stack web apps with logins, user roles and database CRUD, deploy them to the cloud, and test them with user acceptance testing and bug tracking.</p>
+          <ul class="stack"><li>Node.js</li><li>Express</li><li>Python</li><li>Flask</li><li>MySQL</li></ul>
+        </div>
+        <div class="skill-group">
+          <h3>IT operations &amp; data centres</h3>
+          <p>I understand how IT services are run day to day using ITIL, including incident and change management, and how data centres use virtualisation and automation to run efficiently.</p>
+          <ul class="stack"><li>ITIL</li><li>Virtualisation</li><li>VMware</li><li>AIOps</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2><span>04</span> Experience</h2>
+      <ol class="timeline">
+        <li>
+          <p class="when">Nov 2023 – Present</p>
+          <h3>Customer Service Staff · J&amp;A Agency</h3>
+          <p>Part-time at hotels including Fullerton Bay Hotel, The Fullerton Hotel, Marina Bay Sands and Capella. A guest once named me in a five-star TripAdvisor review for my service.</p>
+        </li>
+        <li>
+          <p class="when">Apr 2025 – May 2025</p>
+          <h3>Salesperson · PVH Corp. (Tommy Hilfiger)</h3>
+          <p>Sold Tommy Hilfiger clothing and learned to read what customers need before recommending anything.</p>
+        </li>
+        <li>
+          <p class="when">Nov 2022 – Oct 2023</p>
+          <h3>Sales Attendant · MOS Burger</h3>
+          <p>Served customers for a year and learned to work fast with a team during peak hours.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <h2><span>05</span> Get in touch</h2>
+      <p class="lead">Open to internships and project collaborations. Email is the fastest way to reach me.</p>
+      <div class="hero-links">
+        <a class="btn primary" href="mailto:ashishsiju9@gmail.com">ashishsiju9@gmail.com</a>
+        <a class="btn" href="resume.html">Resume</a>
+        <a class="btn" href="https://github.com/25013279" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/ashish-siju-952b362a2/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Ashish Siju · Built with HTML &amp; CSS, hosted on Render</p>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
