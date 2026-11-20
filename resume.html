@@ -10,67 +10,94 @@
   <style>
     :root {
       --bg: #0d1117;
-      --bg-card: #151b24;
+      --bg-card: #121820;
       --border: #253041;
       --text: #e6edf3;
       --muted: #8b98a8;
       --accent: #3ddc97;
+      --accent-dim: rgba(61, 220, 151, 0.12);
       --mono: 'JetBrains Mono', monospace;
       --sans: 'Space Grotesk', system-ui, sans-serif;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--text); font-family: var(--sans); }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.55; }
     a { color: inherit; text-decoration: none; }
 
-    .toolbar { max-width: 210mm; margin: 0 auto; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; }
+    .toolbar { max-width: 900px; margin: 0 auto; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; }
     .toolbar a { font-size: 14px; padding: 9px 18px; border: 1px solid var(--border); border-radius: 8px; transition: border-color .2s; }
     .toolbar a:hover { border-color: var(--accent); }
     .toolbar .dl { background: var(--accent); color: #062014; border-color: var(--accent); font-weight: 500; }
 
-    .page {
-      width: 210mm; min-height: 297mm; margin: 0 auto 48px;
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
-      padding: 12mm 15mm; font-size: 10pt; line-height: 1.45;
+    .sheet { max-width: 900px; margin: 0 auto 48px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+
+    /* Header */
+    .r-head {
+      display: grid; grid-template-columns: 170px 1fr; gap: 34px; align-items: start;
+      padding: 38px 42px 36px;
+      background: radial-gradient(ellipse at 95% 0%, rgba(61, 220, 151, 0.16), transparent 62%), var(--bg-card);
+      border-bottom: 1px solid var(--border);
     }
+    .photo { position: relative; width: 170px; margin-bottom: 14px; }
+    .photo img { display: block; width: 170px; height: 212px; object-fit: cover; object-position: top; border-radius: 10px; }
+    .badge { position: absolute; left: 50%; bottom: -14px; transform: translateX(-50%); white-space: nowrap; background: var(--accent); color: #062014; font-weight: 700; font-size: 12px; padding: 7px 14px; border-radius: 999px; }
+    h1 { font-size: clamp(34px, 6vw, 56px); line-height: 1.05; letter-spacing: 1px; text-transform: uppercase; }
+    .r-sub { font-family: var(--mono); font-size: 13px; color: var(--accent); margin: 8px 0 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+    .r-summary { color: var(--muted); font-size: 15.5px; }
 
-    header { border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 6px; }
-    .tag { font-family: var(--mono); color: var(--accent); font-size: 9pt; }
-    h1 { font-size: 26pt; letter-spacing: -0.5px; line-height: 1.1; }
-    .title { font-size: 10.5pt; color: var(--accent); margin-top: 3px; }
-    .contact { margin-top: 8px; font-size: 9pt; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 16px; }
-    .contact a:hover { color: var(--accent); }
+    /* Body */
+    .r-body { display: grid; grid-template-columns: 1fr 270px; }
+    .r-main { padding: 34px 40px 40px 42px; }
+    .r-side { padding: 34px 30px 40px; border-left: 1px solid var(--border); }
 
-    h2 { font-size: 11pt; margin: 10px 0 5px; display: flex; align-items: center; gap: 10px; }
-    h2 span { font-family: var(--mono); font-size: 8.5pt; color: var(--accent); }
+    h2 { font-size: 20px; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+    h2 span { font-family: var(--mono); font-size: 13px; color: var(--accent); }
     h2::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .r-main section + section { margin-top: 32px; }
 
-    p, li, dd { color: var(--muted); }
-    .row { display: flex; justify-content: space-between; gap: 12px; }
-    .row strong { font-size: 10.5pt; color: var(--text); font-weight: 500; }
-    .date { font-family: var(--mono); font-size: 8.5pt; color: var(--accent); white-space: nowrap; }
-    .item { margin-bottom: 6px; }
-    ul { padding-left: 15px; margin-top: 2px; }
-    li { margin-bottom: 1px; }
+    .item { margin-bottom: 18px; }
+    .item:last-child { margin-bottom: 0; }
+    .item h3 { font-size: 17px; font-weight: 500; line-height: 1.35; }
+    .meta { font-family: var(--mono); font-size: 12px; color: var(--accent); margin: 2px 0 6px; }
+    .item p, .item li, .plain li { color: var(--muted); font-size: 15px; }
+    ul { padding-left: 18px; }
+    li { margin-bottom: 5px; }
     li::marker { color: var(--accent); }
-    .stack { font-family: var(--mono); font-size: 8pt; color: var(--accent); opacity: .85; }
 
-    .skills { display: grid; grid-template-columns: 120px 1fr; gap: 2px 10px; }
-    .skills dt { color: var(--text); font-weight: 500; }
+    /* Sidebar */
+    .r-side h2 { font-size: 18px; margin-bottom: 12px; }
+    .r-side h2::after { max-width: 80px; }
+    .r-side section + section { margin-top: 28px; }
+    .contact div { padding: 8px 0 7px; border-bottom: 1px solid var(--border); }
+    .contact div:last-child { border-bottom: none; }
+    .contact dt { font-family: var(--mono); font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+    .contact dd { font-size: 14.5px; word-break: break-word; }
+    .contact a:hover { color: var(--accent); }
+    .tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+    .tags li { margin: 0; font-family: var(--mono); font-size: 12px; padding: 5px 11px; border-radius: 999px; background: var(--accent-dim); color: var(--accent); }
+    .edu strong { display: block; font-weight: 500; font-size: 16px; line-height: 1.35; margin-bottom: 4px; }
+    .edu .meta { margin: 0; }
+    .certs p { color: var(--muted); font-size: 14px; }
+    .certs p + p { margin-top: 10px; }
+    .certs b { color: var(--text); font-weight: 500; }
 
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
-
-    /* Printed / PDF version stays light so it prints cleanly */
-    @media print {
-      @page { size: A4; margin: 0; }
-      :root { --bg: #fff; --bg-card: #fff; --border: #dfe4ea; --text: #1c2430; --muted: #3d4756; --accent: #0f8a5f; }
-      .toolbar, .tag { display: none; }
-      .page { margin: 0; width: auto; min-height: auto; border: none; border-radius: 0; padding: 8mm 15mm; }
-    }
     @media screen and (max-width: 820px) {
       .toolbar { padding: 16px; }
-      .page { width: auto; min-height: auto; margin: 0 10px 30px; padding: 22px 18px; }
-      .row { flex-direction: column; gap: 0; }
-      .skills, .two-col { grid-template-columns: 1fr; }
+      .sheet { margin: 0 10px 30px; }
+      .r-head { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 28px 22px; gap: 22px; }
+      .r-sub { text-align: center; }
+      .r-body { grid-template-columns: 1fr; }
+      .r-main { padding: 26px 22px; }
+      .r-side { border-left: none; border-top: 1px solid var(--border); padding: 26px 22px 32px; }
+    }
+
+    /* Printing uses a light version so it prints cleanly */
+    @media print {
+      @page { size: A4; margin: 0; }
+      :root { --bg: #fff; --bg-card: #fff; --border: #dfe4ea; --text: #1c2430; --muted: #3d4756; --accent: #0f8a5f; --accent-dim: #e6f6ef; }
+      .toolbar { display: none; }
+      .sheet { margin: 0; border: none; border-radius: 0; max-width: none; }
+      .r-head { background: #fff; }
+      .badge { color: #fff; }
     }
   </style>
 </head>
@@ -81,89 +108,108 @@
     <a class="dl" href="resume.pdf" download>Download PDF</a>
   </div>
 
-  <div class="page">
-    <header>
-      <p class="tag">$ cat resume.txt</p>
-      <h1>Ashish Siju</h1>
-      <p class="title">Enterprise Cloud Computing &amp; Management Student · Cloud / DevOps / Infrastructure</p>
-      <div class="contact">
-        <span>Singapore</span>
-        <a href="mailto:ashishsiju9@gmail.com">ashishsiju9@gmail.com</a>
-        <a href="https://www.linkedin.com/in/ashish-siju-952b362a2/">linkedin.com/in/ashish-siju-952b362a2</a>
-        <a href="https://github.com/25013279">github.com/25013279</a>
+  <div class="sheet">
+    <header class="r-head">
+      <div class="photo">
+        <img src="images/resume-photo.jpg" alt="Ashish Siju" width="640" height="800">
+        <span class="badge">Cloud Computing &amp; DevOps</span>
+      </div>
+      <div>
+        <h1>Ashish Siju</h1>
+        <p class="r-sub">Enterprise Cloud Computing &amp; Management · Republic Polytechnic</p>
+        <p class="r-summary">Cloud and DevOps-focused diploma student. I build Python and Node.js web apps on MySQL, containerise them with Docker, and work with AWS, Linux and Cisco networking. Three years of part-time guest service at luxury hotels and a year as a student leader.</p>
       </div>
     </header>
 
-    <h2><span>01</span> Profile</h2>
-    <p>Diploma student at Republic Polytechnic with hands-on work in AWS, Docker, Linux and Cisco networking. I've built and deployed full-stack web apps and have three years of part-time customer service experience at luxury hotels. Looking for an internship in cloud, DevOps or infrastructure.</p>
+    <div class="r-body">
+      <div class="r-main">
 
-    <h2><span>02</span> Education</h2>
-    <div class="item">
-      <div class="row"><strong>Diploma in Enterprise Cloud Computing &amp; Management · Republic Polytechnic</strong><span class="date">Expected Mar 2028</span></div>
-      <p>Relevant modules: Cloud Architecting &amp; Administration (AWS), Cloud Data Centre Management, DevOps Essentials, Linux Administration &amp; Containerisation, Internetworking, Intelligent Networks, IT Service &amp; AI Operations</p>
-    </div>
+        <section>
+          <h2><span>01</span> Projects</h2>
+          <div class="item">
+            <h3>Sparkle: Cleaning Service Booking Platform</h3>
+            <p class="meta">Booking feature owner · Team of 6 · Flask, MySQL, Docker</p>
+            <ul>
+              <li>Built the Flask booking module: service, time slot and payment choice, saved to a shared Aiven MySQL database with an automatic notification.</li>
+              <li>Sized time slots to each service's real duration (a 5-hour clean only offers 5-hour slots), with past-date checks and Luhn card validation.</li>
+              <li>Added a bookings page with detail view and a no-reload filter across 4 statuses; containerised the app with Docker.</li>
+            </ul>
+          </div>
+          <div class="item">
+            <h3>UniPocket &amp; SupermarketApp</h3>
+            <p class="meta">Node.js · Express · EJS · MySQL</p>
+            <ul>
+              <li>UniPocket (team): built the budget dashboard with balance, spending-by-category chart and recent transactions.</li>
+              <li>SupermarketApp (solo): store app with product CRUD, image uploads, sessions and admin/shopper roles.</li>
+            </ul>
+          </div>
+        </section>
 
-    <h2><span>03</span> Projects</h2>
-    <div class="item">
-      <div class="row"><strong>Sparkle: Cleaning Service Booking App</strong><span class="date">Team of 6 · DevOps</span></div>
-      <ul>
-        <li>Built the booking feature: duration-based time slots, past-date blocking, Luhn card checks, and edit/cancel.</li>
-        <li>Containerised the Flask app with Docker and docker-compose for the team's CI/CD pipeline.</li>
-      </ul>
-      <p class="stack">Python · Flask · SQLAlchemy · MySQL (Aiven) · Docker · Git</p>
-    </div>
-    <div class="item">
-      <div class="row"><strong>UniPocket: Student Allowance Tracker</strong><span class="date">Team · Web dev</span></div>
-      <ul>
-        <li>Built the budget dashboard showing remaining balance, spending by category and recent transactions.</li>
-      </ul>
-      <p class="stack">Node.js · Express · EJS · Azure MySQL</p>
-    </div>
-    <div class="item">
-      <div class="row"><strong>SupermarketApp</strong><span class="date">Solo · Web dev</span></div>
-      <ul>
-        <li>CRUD store app with image uploads, sessions and role-based access; migrated to Azure MySQL and deployed on Render.</li>
-      </ul>
-      <p class="stack">Node.js · Express · MySQL · Bootstrap · Render</p>
-    </div>
-    <div class="item">
-      <div class="row"><strong>Enterprise Network Design &amp; RESTCONF Automation</strong><span class="date">Networking labs</span></div>
-      <ul>
-        <li>Configured VLANs, trunks and STP in a multi-site Packet Tracer network; automated Cisco router changes via RESTCONF.</li>
-      </ul>
-      <p class="stack">Cisco IOS · Packet Tracer · Python · RESTCONF · Postman</p>
-    </div>
+        <section>
+          <h2><span>02</span> Experience</h2>
+          <div class="item">
+            <h3>Customer Service Staff · J&amp;A Agency</h3>
+            <p class="meta">Nov 2023 – Present · Part-time</p>
+            <p>Serve guests at events of up to several thousand people at The Fullerton Hotel, Marina Bay Sands and Capella. Named in a five-star TripAdvisor review.</p>
+          </div>
+          <div class="item">
+            <h3>Salesperson · PVH Corp. (Tommy Hilfiger)</h3>
+            <p class="meta">Apr 2025 – May 2025 · Part-time</p>
+            <p>Made 20–30 sales per shift by matching products to what each customer needed.</p>
+          </div>
+          <div class="item">
+            <h3>Sales Attendant · MOS Burger</h3>
+            <p class="meta">Nov 2022 – Oct 2023 · Part-time</p>
+            <p>Served close to 100 customers per shift with the team during peak hours.</p>
+          </div>
+        </section>
 
-    <h2><span>04</span> Technical skills</h2>
-    <dl class="skills">
-      <dt>Cloud &amp; DevOps</dt><dd>AWS, Azure MySQL, Render, Docker, docker-compose, Jenkins, Git, GitHub</dd>
-      <dt>Systems</dt><dd>Linux (RHEL 9), Bash, LVM, NFS, SELinux, firewalld, VMware, VirtualBox</dd>
-      <dt>Networking</dt><dd>Cisco IOS, VLANs, STP, trunking, RESTCONF, Packet Tracer</dd>
-      <dt>Development</dt><dd>Python, Flask, Node.js, Express, EJS, JavaScript, HTML, CSS, MySQL</dd>
-    </dl>
+        <section>
+          <h2><span>03</span> Leadership &amp; volunteering</h2>
+          <ul class="plain">
+            <li>Student Leader, Republic Polytechnic (1 year).</li>
+            <li>Planned and hosted a one-week youth camp in Malaysia.</li>
+            <li>Leader, The Boys' Brigade (secondary school).</li>
+            <li>Facilitated tech workshops for secondary school students at Tech Saves the Day; volunteered at Seniors Making Waves! and as crew at Pokémon Run 2026.</li>
+          </ul>
+        </section>
 
-    <h2><span>05</span> Certifications &amp; awards</h2>
-    <div class="two-col">
-      <ul>
-        <li>Python for Data Visualisation</li>
-        <li>Python Object-Oriented Programming</li>
-        <li>Project Management Foundations: Requirements</li>
-      </ul>
-      <ul>
-        <li>Google Prompting Essentials</li>
-        <li>Computer Hardware Basics</li>
-        <li>SINDA Outstanding Performance Award (GCE O-Level)</li>
-      </ul>
-    </div>
+      </div>
 
-    <h2><span>06</span> Work experience</h2>
-    <div class="item">
-      <div class="row"><strong>Customer Service Staff · J&amp;A Agency</strong><span class="date">Nov 2023 – Present</span></div>
-      <p>Part-time at Fullerton Bay Hotel, The Fullerton Hotel, Marina Bay Sands and Capella. Named by a guest in a five-star TripAdvisor review.</p>
-    </div>
-    <div class="item">
-      <div class="row"><strong>Salesperson · PVH Corp. (Tommy Hilfiger)</strong><span class="date">Apr 2025 – May 2025</span></div>
-      <div class="row"><strong>Sales Attendant · MOS Burger</strong><span class="date">Nov 2022 – Oct 2023</span></div>
+      <aside class="r-side">
+
+        <section>
+          <h2>Contact</h2>
+          <dl class="contact">
+            <div><dt>Phone</dt><dd><a href="tel:+6593406371">+65 9340 6371</a></dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:ashishsiju9@gmail.com">ashishsiju9@gmail.com</a></dd></div>
+            <div><dt>Location</dt><dd>Singapore 732684</dd></div>
+            <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/ashish-siju-952b362a2/">linkedin.com/in/ashish-siju-952b362a2</a></dd></div>
+            <div><dt>GitHub</dt><dd><a href="https://github.com/25013279">github.com/25013279</a></dd></div>
+            <div><dt>Born · Nationality</dt><dd>13 Nov 2007 · Indian</dd></div>
+          </dl>
+        </section>
+
+        <section>
+          <h2>Tech</h2>
+          <ul class="tags">
+            <li>AWS</li><li>Docker</li><li>Linux</li><li>Bash</li><li>Git</li><li>CI/CD</li><li>Python</li><li>Flask</li><li>Node.js</li><li>MySQL</li><li>Cisco IOS</li><li>RESTCONF</li>
+          </ul>
+        </section>
+
+        <section class="edu">
+          <h2>Education</h2>
+          <strong>Diploma in Enterprise Cloud Computing &amp; Management</strong>
+          <p class="meta">Republic Polytechnic · Expected Mar 2028</p>
+        </section>
+
+        <section class="certs">
+          <h2>Certs &amp; award</h2>
+          <p>Python for Data Visualisation · Python OOP · Project Management Foundations · Google Prompting Essentials · Computer Hardware Basics</p>
+          <p><b>Award:</b> SINDA Outstanding Performance Award, GCE O-Level</p>
+        </section>
+
+      </aside>
     </div>
   </div>
 
